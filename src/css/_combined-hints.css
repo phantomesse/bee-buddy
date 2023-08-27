@@ -1,0 +1,30 @@
+.potential-words {
+  display: flex;
+  width: 100%;
+  overflow: scroll;
+}
+
+.potential-word {
+  display: flex;
+  gap: calc(var(--grid) / 4);
+  padding: 20px
+}
+
+.letter-block {
+  --size: calc(var(--grid) * 3);
+  align-items: center;
+  background: #eee;
+  border-radius: calc(var(--grid) / 2);
+  display: flex;
+  height: var(--size);
+  justify-content: center;
+  width: var(--size);
+}
+
+.letter-block.starting-letter {
+  background: var(--primary-accent-color);
+}
+
+.letter-block.middle-letter {
+  background: var(--secondary-accent-color);
+}

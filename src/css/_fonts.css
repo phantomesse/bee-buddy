@@ -1,0 +1,13 @@
+:root {
+  --heading-font-family: 'Codystar', cursive;
+  --body-font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  font: 16px var(--body-font-family);
+}
+
+h1 {
+  font: 400 48px var(--heading-font-family);
+  margin: 0;
+}

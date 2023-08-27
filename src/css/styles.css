@@ -1,0 +1,57 @@
+@import '_colors.css';
+@import '_const.css';
+@import '_fonts.css';
+  @import '_combined-hints.css';
+
+html,
+body {
+  background: var(--primary-bg-color);
+  box-sizing: border-box;
+  color: var(--primary-fg-color);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+form {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--side-padding);
+}
+
+h1 {
+  margin: var(--side-padding) 0 0;
+}
+
+label {
+  text-align: left;
+  margin-top: calc(var(--grid) * 2);
+  width: 100%;
+}
+
+textarea {
+  height: calc(var(--grid) * 20);
+  width: 100%;
+}
+
+input[type=text], textarea {
+}
+
+.word-start-hints div {
+  display: flex;
+  gap: var(--grid);
+}
+
+.word-start-hint {
+  display: flex;
+  background: #EEE;
+}
