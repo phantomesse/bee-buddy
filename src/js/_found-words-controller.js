@@ -88,20 +88,6 @@ class FoundWordsController {
       this.addFoundWordElement
     );
     addFoundWordButton.innerText = '+';
-    const self = this;
-    addFoundWordButton.addEventListener('click', e => {
-      e.preventDefault();
-
-      const startingLetters = startingLettersSelectorElement.value;
-      const wordLength = parseInt(wordLengthSelectorElement.value);
-      const foundWord = {
-        startingLetters: startingLetters,
-        wordLength: wordLength,
-      };
-      memoryController.addFoundWord(foundWord);
-      self.addFoundWord(foundWord);
-      eventController.dispatchFoundWordEvent();
-    });
 
     // Add option for users to type in the found word.
     const foundWordTextInput = createElement('input', []);
@@ -125,6 +111,25 @@ class FoundWordsController {
           if (option.textContent == wordLength) option.selected = true;
         }
       }
+    });
+
+    // Functionality for adding a found word.
+    const self = this;
+    addFoundWordButton.addEventListener('click', e => {
+      e.preventDefault();
+
+      const startingLetters = startingLettersSelectorElement.value;
+      const wordLength = parseInt(wordLengthSelectorElement.value);
+      const foundWord = {
+        startingLetters: startingLetters,
+        wordLength: wordLength,
+      };
+      memoryController.addFoundWord(foundWord);
+      self.addFoundWord(foundWord);
+      eventController.dispatchFoundWordEvent();
+
+      // Clear found word input.
+      foundWordTextInput.value = '';
     });
   }
 }

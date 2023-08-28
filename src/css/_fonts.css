@@ -10,5 +10,6 @@ body {
 
 h1 {
   font: 400 48px var(--heading-font-family);
+  line-height: calc(var(--grid) * 6);
   margin: 0;
 }

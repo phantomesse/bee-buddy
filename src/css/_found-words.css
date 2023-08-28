@@ -1,0 +1,71 @@
+.found-words {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--grid);
+  padding: 0 var(--side-padding);
+  width: 100%;
+}
+
+.add-found-word {
+  display: flex;
+}
+
+.add-found-word input {
+  background: var(--primary-surface-color);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  border: 2px solid var(--primary-accent-color);
+  box-sizing: border-box;
+  color: var(--primary-accent-color);
+  font: inherit;
+  height: calc(var(--grid) * 5);
+  margin: 0;
+  outline: none;
+  padding: 0 var(--grid);
+  width: 100%;
+}
+
+.add-found-word input:focus {
+  background: var(--primary-bg-color);
+}
+
+.add-found-word select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: var(--primary-accent-color);
+  border: 0;
+  color: var(--primary-on-accent-color);
+  font: inherit;
+  height: calc(var(--grid) * 5);
+  margin: 0;
+  border-radius: 0;
+  outline: none;
+  padding: calc(var(--grid) / 2) var(--grid);
+}
+
+.add-found-word button {
+  margin: 0;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  padding-left: calc(var(--grid) * 2);
+  padding-right: calc(var(--grid) * 2);
+}
+
+.found-word {
+  align-items: center;
+  background: var(--primary-surface-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  padding: 0 var(--grid);
+}
+
+.found-word .letter-block:not(.starting-letter) {
+  background: var(--primary-bg-color);
+}
+
+.found-word button {
+  background: none;
+  color: var(--primary-fg-color);
+  border-radius: 0;
+  margin: 0;
+  padding-right: 0;
+}

@@ -1,10 +1,11 @@
 @import '_colors.css';
-@import '_combined-hints.css';
+@import '_potential-word-hints.css';
 @import '_const.css';
 @import '_counter.css';
 @import '_fonts.css';
 @import '_letter-count-hints.css';
 @import '_word-start-hints.css';
+@import '_found-words.css';
 
 html,
 body {
@@ -38,8 +39,13 @@ form {
   flex-direction: column;
 }
 
+main {
+  padding-bottom: var(--side-padding);
+}
+
 h1 {
-  margin: var(--side-padding) 0 0;
+  color: var(--primary-accent-color);
+  margin: var(--side-padding) 0 calc(var(--grid) * -4);
 }
 
 label {
@@ -106,71 +112,6 @@ input[type=radio] {
   color: var(--primary-on-accent-color)
 }
 
-.found-words {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 var(--side-padding);
-  gap: var(--grid);
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.add-found-word {
-  display: flex;
-}
-
-.add-found-word input {
-  background: var(--primary-surface-color);
-  border-radius: var(--border-radius) 0 0 var(--border-radius);
-  border: 2px solid var(--primary-accent-color);
-  box-sizing: border-box;
-  color: var(--primary-accent-color);
-  font: inherit;
-  height: calc(var(--grid) * 5);
-  outline: none;
-  padding: 0 var(--grid);
-  width: 100%;
-}
-
-
-.add-found-word select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  background: var(--primary-accent-color);
-  border: 0;
-  color: var(--primary-on-accent-color);
-  font: inherit;
-  height: calc(var(--grid) * 5);
-  outline: none;
-  padding: calc(var(--grid) / 2) var(--grid);
-}
-
-.add-found-word button {
-  margin: 0;
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
-  padding-left: calc(var(--grid) * 2);
-  padding-right: calc(var(--grid) * 2);
-}
-
-.found-word {
-  align-items: center;
-  background: var(--primary-surface-color);
-  border-radius: var(--border-radius);
-  display: flex;
-  padding: 0 var(--grid);
-}
-
-.found-word .letter-block:not(.starting-letter) {
-  background: var(--primary-bg-color);
-}
-
-.found-word button {
-  background: none;
-  color: var(--primary-fg-color);
-  border-radius: 0;
-  margin: 0;
-  padding-right: 0;
-}
 
 #error {
   --height: calc(var(--grid) * 4);

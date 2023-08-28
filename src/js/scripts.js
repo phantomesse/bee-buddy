@@ -1,8 +1,8 @@
 const { LetterCountHints } = require('./_letter-count-hints.js');
 const { WordStartHints } = require('./_word-start-hints.js');
-const { CombinedHints } = require('./_combined-hints.js');
 const { memoryController } = require('./_memory-controller.js');
 const { FoundWordsController } = require('./_found-words-controller.js');
+const { PotentialWordHints } = require('./_potental-word-hints.js');
 
 const rawInputElement = document.getElementById('raw-input');
 const rawInputSubmitButton = document.getElementById('raw-input-submit');
@@ -52,7 +52,7 @@ function updateHints() {
   try {
     const letterCountHints = new LetterCountHints();
     const wordStartHints = new WordStartHints();
-    // const combinedHints = new CombinedHints(letterCountHints, wordStartHints);
+    new PotentialWordHints(letterCountHints, wordStartHints);
     new FoundWordsController(letterCountHints, wordStartHints);
   } catch (exception) {
     showErrorBar('Unable to parse hint! Please try again.');
