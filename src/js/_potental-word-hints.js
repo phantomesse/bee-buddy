@@ -107,7 +107,10 @@ class Hint {
         foundWord => foundWord.startingLetters === self.startingLetters
       ).length;
       const foundWordsMatchingWordLengthCount = foundWords.filter(
-        foundWord => foundWord.word === self.wordLength
+        foundWord =>
+          foundWord.startingLetters.charAt(0) ===
+            self.startingLetters.charAt(0) &&
+          foundWord.wordLength === self.wordLength
       ).length;
       self.element.classList.toggle(
         'hidden',
