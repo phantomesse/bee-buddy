@@ -30,9 +30,14 @@ class PotentialWordHints {
         const letterCountCount = wordLengthHints.find(
           hint => hint.wordLength === wordLength
         ).count;
-        const count = Math.min(wordStartCount, letterCountCount);
         this.hints.push(
-          new Hint(startingLetters, wordLength, middleLetter, count)
+          new Hint(
+            startingLetters,
+            wordLength,
+            middleLetter,
+            wordStartCount,
+            letterCountCount
+          )
         );
       }
     }
@@ -58,7 +63,13 @@ class Hint {
    * @param {number} wordLength number of letters in the word
    * @param {string} middleLetter
    */
-  constructor(startingLetters, wordLength, middleLetter, count) {
+  constructor(
+    startingLetters,
+    wordLength,
+    middleLetter,
+    wordStartCount,
+    letterCountCount
+  ) {
     this.startingLetters = startingLetters;
     this.wordLength = wordLength;
 
@@ -91,14 +102,18 @@ class Hint {
 
     const self = this;
     function hideIfFound() {
-      const foundWordsCount = memoryController
-        .getFoundWords()
-        .filter(
-          foundWord =>
-            foundWord.startingLetters === self.startingLetters &&
-            foundWord.wordLength === self.wordLength
-        ).length;
-      self.element.classList.toggle('hidden', foundWordsCount >= count);
+      const foundWords = memoryController.getFoundWords();
+      const foundWordsMatchingStartingLettersCount = foundWords.filter(
+        foundWord => foundWord.startingLetters === self.startingLetters
+      ).length;
+      const foundWordsMatchingWordLengthCount = foundWords.filter(
+        foundWord => foundWord.word === self.wordLength
+      ).length;
+      self.element.classList.toggle(
+        'hidden',
+        foundWordsMatchingStartingLettersCount >= wordStartCount ||
+          foundWordsMatchingWordLengthCount >= letterCountCount
+      );
     }
     hideIfFound();
     eventController.addFoundWordListener(() => hideIfFound());
