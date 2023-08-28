@@ -5,6 +5,8 @@ const { createElement, createWordElement } = require('./_utils.js');
 /** Handles adding and removing found words. */
 class FoundWordsController {
   constructor(letterCountHints, wordStartHints) {
+    document.getElementById('found-words-label').classList.remove('hidden');
+
     this.foundWordsContainer = document.querySelector('.found-words');
     this.foundWordsContainer.innerHTML = '';
 
@@ -99,6 +101,30 @@ class FoundWordsController {
       memoryController.addFoundWord(foundWord);
       self.addFoundWord(foundWord);
       eventController.dispatchFoundWordEvent();
+    });
+
+    // Add option for users to type in the found word.
+    const foundWordTextInput = createElement('input', []);
+    this.addFoundWordElement.insertAdjacentElement(
+      'afterbegin',
+      foundWordTextInput
+    );
+    foundWordTextInput.addEventListener('keyup', () => {
+      const word = foundWordTextInput.value;
+
+      const startingLetters = word.toUpperCase().slice(0, 2);
+      if (startingLettersList.has(startingLetters)) {
+        for (const option of startingLettersSelectorElement.children) {
+          if (option.textContent === startingLetters) option.selected = true;
+        }
+      }
+
+      const wordLength = word.length;
+      if (wordLengths.has(wordLength)) {
+        for (const option of wordLengthSelectorElement.children) {
+          if (option.textContent == wordLength) option.selected = true;
+        }
+      }
     });
   }
 }

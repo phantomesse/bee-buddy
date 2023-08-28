@@ -29,7 +29,11 @@ class MemoryController {
 
   /** @param {string} rawInput */
   updateRawInput(rawInput) {
-    this.#localStorageCache.rawInput = rawInput;
+    this.#localStorageCache = {
+      rawInput: rawInput.trim(),
+      middleLetter: '',
+      foundWords: [],
+    };
     this.#updateLocalStorage();
   }
 

@@ -115,6 +115,24 @@ input[type=radio] {
   width: 100%;
 }
 
+.add-found-word {
+  display: flex;
+}
+
+.add-found-word input {
+  background: var(--primary-surface-color);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  border: 2px solid var(--primary-accent-color);
+  box-sizing: border-box;
+  color: var(--primary-accent-color);
+  font: inherit;
+  height: calc(var(--grid) * 5);
+  outline: none;
+  padding: 0 var(--grid);
+  width: 100%;
+}
+
+
 .add-found-word select {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -125,10 +143,6 @@ input[type=radio] {
   height: calc(var(--grid) * 5);
   outline: none;
   padding: calc(var(--grid) / 2) var(--grid);
-}
-
-.add-found-word select:first-child {
-  border-radius: var(--border-radius) 0 0 var(--border-radius);
 }
 
 .add-found-word button {
@@ -171,5 +185,10 @@ input[type=radio] {
 }
 
 #error.hidden {
+  display: block;
   margin-top: calc(var(--height) * -1);
+}
+
+.hidden {
+  display: none;
 }
