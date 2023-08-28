@@ -1,9 +1,11 @@
+const { memoryController } = require('./_memory-controller.js');
+const { eventController } = require('./_event-controller.js');
 const { createElement } = require('./_utils.js');
 
 class LetterCountHints {
-  /** @param {string} rawInput */
-  constructor(rawInput) {
-    const lines = rawInput
+  constructor() {
+    const lines = memoryController
+      .getRawInput()
       .trim()
       .split('\n\n')[0]
       .split('\n')
@@ -22,7 +24,50 @@ class LetterCountHints {
       for (let i = 0; i < counts.length; i++) {
         const count = counts[i];
         if (count === '-') continue;
-        this.hints.push(new Hint(startingLetter, wordLengths[i], count));
+        this.hints.push(
+          new Hint(startingLetter, wordLengths[i], parseInt(count))
+        );
+      }
+    }
+    this.render();
+  }
+
+  render() {
+    this.element = createElement(
+      'section',
+      'letter-count-hints',
+      document.querySelector('main')
+    );
+
+    const wordLengths = new Set(this.hints.map(hint => hint.wordLength));
+    this.element.style.gridTemplateColumns = `repeat(${
+      wordLengths.size + 1
+    }, 1fr)`;
+    createElement('span', [], this.element);
+    for (const wordLength of wordLengths) {
+      const element = createElement('span', [], this.element);
+      element.innerText = wordLength;
+    }
+
+    const startingLetters = new Set(
+      this.hints.map(hint => hint.startingLetter)
+    );
+    for (const startingLetter of startingLetters) {
+      const element = createElement('span', [], this.element);
+      element.innerHTML = startingLetter;
+
+      const wordLengthToHintMap = Object.fromEntries(
+        this.hints
+          .filter(hint => hint.startingLetter === startingLetter)
+          .map(hint => [hint.wordLength, hint])
+      );
+      for (const wordLength of wordLengths) {
+        const element = createElement('span', [], this.element);
+        if (wordLength in wordLengthToHintMap) {
+          element.append(wordLengthToHintMap[wordLength].element);
+        } else {
+          element.innerText = '-';
+        }
       }
     }
   }
@@ -40,6 +85,28 @@ class Hint {
     this.startingLetter = startingLetter;
     this.wordLength = wordLength;
     this.count = count;
+    this.element = createElement('span', 'counter');
+
+    const self = this;
+    function setCount() {
+      const foundWordsCount = memoryController
+        .getFoundWords()
+        .filter(
+          foundWord =>
+            foundWord.startingLetters.startsWith(self.startingLetter) &&
+            foundWord.wordLength === self.wordLength
+        ).length;
+      const count = self.count - foundWordsCount;
+      if (count <= 0) {
+        self.element.innerText = '-';
+        self.element.classList.add('zero');
+      } else {
+        self.element.innerText = count;
+        self.element.classList.remove('zero');
+      }
+    }
+    setCount();
+    eventController.addFoundWordListener(() => setCount());
   }
 }
 

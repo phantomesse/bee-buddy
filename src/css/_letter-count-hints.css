@@ -1,0 +1,13 @@
+.letter-count-hints {
+  display: grid;
+  width: 100%;
+}
+
+.letter-count-hints span {
+  --size: calc(var(--grid) * 3);
+  align-items: center;
+  display: flex;
+  height: var(--size);
+  justify-content: center;
+  width: var(--size);
+}

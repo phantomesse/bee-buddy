@@ -3,34 +3,120 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width
+  initial-scale=1.0">
   <title>Bee Buddy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Codystar&family=Montserrat&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Borel&family=Montserrat:wght@400;600&display=swap"
     rel="stylesheet">
 </head>
 
 <body>
   <header>
-    <div id="error"></div>
+    <div id="error" class="hidden"></div>
     <h1>Bee Buddy</h1>
   </header>
 
   <form>
-    <label>Input the NYT hint here:</label>
-    <textarea></textarea>
+    <label>Input the NYT hint here</label>
+    <textarea id="raw-input"></textarea>
+    <button id="raw-input-submit">Generate hints</button>
 
-    <label>Middle letter:</label>
-    <input id="middle-letter" type="text" value="Y" />
+    <label>Middle letter</label>
+    <div class="middle-letter-options">
+      <input name="middle-letter" id="middle-letter-A" type="radio" value="A"
+        checked>
+      <label for="middle-letter-A">A</label>
+
+      <input name="middle-letter" id="middle-letter-B" type="radio" value="B">
+      <label for="middle-letter-B">B</label>
+
+      <input name="middle-letter" id="middle-letter-C" type="radio" value="C">
+      <label for="middle-letter-C">C</label>
+
+      <input name="middle-letter" id="middle-letter-D" type="radio" value="D">
+      <label for="middle-letter-D">D</label>
+
+      <input name="middle-letter" id="middle-letter-E" type="radio" value="E">
+      <label for="middle-letter-E">E</label>
+
+      <input name="middle-letter" id="middle-letter-F" type="radio" value="F">
+      <label for="middle-letter-F">F</label>
+
+      <input name="middle-letter" id="middle-letter-G" type="radio" value="G">
+      <label for="middle-letter-G">G</label>
+
+      <input name="middle-letter" id="middle-letter-H" type="radio" value="H">
+      <label for="middle-letter-H">H</label>
+
+      <input name="middle-letter" id="middle-letter-I" type="radio" value="I">
+      <label for="middle-letter-I">I</label>
+
+      <input name="middle-letter" id="middle-letter-J" type="radio" value="J">
+      <label for="middle-letter-J">J</label>
+
+      <input name="middle-letter" id="middle-letter-K" type="radio" value="K">
+      <label for="middle-letter-K">K</label>
+
+      <input name="middle-letter" id="middle-letter-L" type="radio" value="L">
+      <label for="middle-letter-L">L</label>
+
+      <input name="middle-letter" id="middle-letter-M" type="radio" value="M">
+      <label for="middle-letter-M">M</label>
+
+      <input name="middle-letter" id="middle-letter-N" type="radio" value="N">
+      <label for="middle-letter-N">N</label>
+
+      <input name="middle-letter" id="middle-letter-O" type="radio" value="O">
+      <label for="middle-letter-O">O</label>
+
+      <input name="middle-letter" id="middle-letter-P" type="radio" value="P">
+      <label for="middle-letter-P">P</label>
+
+      <input name="middle-letter" id="middle-letter-Q" type="radio" value="Q">
+      <label for="middle-letter-Q">Q</label>
+
+      <input name="middle-letter" id="middle-letter-R" type="radio" value="R">
+      <label for="middle-letter-R">R</label>
+
+      <input name="middle-letter" id="middle-letter-S" type="radio" value="S">
+      <label for="middle-letter-S">S</label>
+
+      <input name="middle-letter" id="middle-letter-T" type="radio" value="T">
+      <label for="middle-letter-T">T</label>
+
+      <input name="middle-letter" id="middle-letter-U" type="radio" value="U">
+      <label for="middle-letter-U">U</label>
+
+      <input name="middle-letter" id="middle-letter-V" type="radio" value="V">
+      <label for="middle-letter-V">V</label>
+
+      <input name="middle-letter" id="middle-letter-W" type="radio" value="W">
+      <label for="middle-letter-W">W</label>
+
+      <input name="middle-letter" id="middle-letter-X" type="radio" value="X">
+      <label for="middle-letter-X">X</label>
+
+      <input name="middle-letter" id="middle-letter-Y" type="radio" value="Y">
+      <label for="middle-letter-Y">Y</label>
+
+      <input name="middle-letter" id="middle-letter-Z" type="radio" value="Z">
+      <label for="middle-letter-Z">Z</label>
+    </div>
+
+    <label>Found words</label>
+    <div class="found-words">
+      <!-- <div class="found-word">
+        <span></span>
+        <span class=""></span>
+      </div> -->
+    </div>
   </form>
 
   <main>
   </main>
-
-  <footer>
-  </footer>
 </body>
 
 </html>

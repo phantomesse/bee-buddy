@@ -1,7 +1,10 @@
 @import '_colors.css';
+@import '_combined-hints.css';
 @import '_const.css';
+@import '_counter.css';
 @import '_fonts.css';
-  @import '_combined-hints.css';
+@import '_letter-count-hints.css';
+@import '_word-start-hints.css';
 
 html,
 body {
@@ -16,16 +19,23 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  gap: calc(var(--grid) * 5);
 }
 
 header,
-form {
+main {
   align-items: center;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  gap: calc(var(--grid) * 5);
   justify-content: center;
   padding: 0 var(--side-padding);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -33,25 +43,133 @@ h1 {
 }
 
 label {
-  text-align: left;
   margin-top: calc(var(--grid) * 2);
-  width: 100%;
+  padding: 0 var(--side-padding);
 }
 
 textarea {
-  height: calc(var(--grid) * 20);
+  background: var(--primary-surface-color);
+  border-radius: var(--border-radius);
+  border: 0;
+  box-sizing: border-box;
+  color: var(--primary-fg-color);
+  font: inherit;
+  height: calc(var(--grid) * 10);
+  margin: 0 var(--side-padding);
+  outline: none;
+  padding: var(--grid);
+  resize: none;
+  width: calc(100% - var(--side-padding) * 2);
+}
+
+button {
+  align-self: flex-end;
+  background: var(--primary-accent-color);
+  border-radius: var(--border-radius);
+  border: 0;
+  color: var(--primary-on-accent-color);
+  font: inherit;
+  margin: var(--grid) var(--side-padding) 0;
+  padding: calc(var(--grid) / 2) var(--grid);
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.middle-letter-options {
+  box-sizing: border-box;
+  display: flex;
+  gap: var(--grid);
+  overflow: auto;
+  padding: 0 var(--side-padding);
   width: 100%;
 }
 
-input[type=text], textarea {
+.middle-letter-options label {
+  --size: calc(var(--grid) * 6);
+  align-items: center;
+  background: var(--primary-surface-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: var(--size);
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: var(--size);
 }
 
-.word-start-hints div {
+.middle-letter-options input[type=radio]:checked + label {
+  background: var(--primary-accent-color);
+  color: var(--primary-on-accent-color)
+}
+
+.found-words {
   display: flex;
+  flex-wrap: wrap;
+  padding: 0 var(--side-padding);
   gap: var(--grid);
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.word-start-hint {
+.add-found-word select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: var(--primary-accent-color);
+  border: 0;
+  color: var(--primary-on-accent-color);
+  font: inherit;
+  height: calc(var(--grid) * 5);
+  outline: none;
+  padding: calc(var(--grid) / 2) var(--grid);
+}
+
+.add-found-word select:first-child {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.add-found-word button {
+  margin: 0;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  padding-left: calc(var(--grid) * 2);
+  padding-right: calc(var(--grid) * 2);
+}
+
+.found-word {
+  align-items: center;
+  background: var(--primary-surface-color);
+  border-radius: var(--border-radius);
   display: flex;
-  background: #EEE;
+  padding: 0 var(--grid);
+}
+
+.found-word .letter-block:not(.starting-letter) {
+  background: var(--primary-bg-color);
+}
+
+.found-word button {
+  background: none;
+  color: var(--primary-fg-color);
+  border-radius: 0;
+  margin: 0;
+  padding-right: 0;
+}
+
+#error {
+  --height: calc(var(--grid) * 4);
+  align-items: center;
+  background: var(--error-color);
+  color: var(--on-error-color);
+  display: flex;
+  height: var(--height);
+  justify-content: center;
+  transition: margin 0.1s linear 0s;
+  width: 100vw;
+}
+
+#error.hidden {
+  margin-top: calc(var(--height) * -1);
 }

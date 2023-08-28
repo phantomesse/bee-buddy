@@ -1,10 +1,11 @@
 :root {
-  --heading-font-family: 'Codystar', cursive;
+  --heading-font-family: 'Borel', cursive;
   --body-font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  font: 16px var(--body-font-family);
+  font: 18px var(--body-font-family);
+  line-height: calc(var(--grid) * 4);
 }
 
 h1 {

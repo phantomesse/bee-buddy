@@ -1,0 +1,8 @@
+.counter {
+  font-size: inherit;
+  color: var(--primary-accent-color);
+}
+
+.zero {
+  color: var(--primary-surface-color);
+}

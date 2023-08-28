@@ -1,15 +1,15 @@
 const { LetterCountHints } = require('./_letter-count-hints.js');
+const { memoryController } = require('./_memory-controller.js');
 const { createElement } = require('./_utils.js');
 const { WordStartHints } = require('./_word-start-hints.js');
 
 class CombinedHints {
   /**
-   *
    * @param {LetterCountHints} letterCountHints
    * @param {WordStartHints} wordStartHints
    */
   constructor(letterCountHints, wordStartHints) {
-    const middleLetter = document.getElementById('middle-letter').value;
+    const middleLetter = memoryController.getMiddleLetter();
     for (const wordStartHint of wordStartHints.hints) {
       const startingLetter = wordStartHint.startingLetters.charAt(0);
       const wordLengths = letterCountHints.hints

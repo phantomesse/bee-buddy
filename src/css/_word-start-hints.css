@@ -1,0 +1,18 @@
+.word-start-hints {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.word-start-hints > div {
+  display: flex;
+  gap: calc(var(--grid) * 2);
+}
+
+.word-start-hint {
+  display: flex;
+  gap: var(--grid);
+  width: calc(var(--grid) * 8);
+  flex-shrink: 0;
+  flex-grow: 0;
+}

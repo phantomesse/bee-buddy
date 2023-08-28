@@ -1,6 +1,15 @@
 :root {
-  --primary-fg-color: #212121;
-  --primary-bg-color: #fff;
-  --secondary-accent-color: #FFD700;
-  --primary-accent-color: #4CAF50;
+  --primary-bg-color: #272727;
+  --primary-fg-color: #ffffff;
+
+  --primary-surface-color: #3c3c3c;
+
+  --primary-accent-color: #FFD700;
+  --primary-on-accent-color: #232323;
+  
+  --secondary-accent-color: #4CAF50;
+  --secondary-on-accent-color: #fff;
+
+  --error-color: rgb(199, 66, 66);
+  --on-error-color: #fff;
 }

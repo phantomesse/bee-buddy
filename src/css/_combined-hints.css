@@ -1,3 +1,7 @@
+.combined-hint {
+  width: 100%;
+}
+
 .potential-words {
   display: flex;
   width: 100%;
@@ -7,14 +11,13 @@
 .potential-word {
   display: flex;
   gap: calc(var(--grid) / 4);
-  padding: 20px
 }
 
 .letter-block {
   --size: calc(var(--grid) * 3);
   align-items: center;
-  background: #eee;
-  border-radius: calc(var(--grid) / 2);
+  background: var(--primary-surface-color);
+  border-radius: var(--grid);
   display: flex;
   height: var(--size);
   justify-content: center;
@@ -23,6 +26,7 @@
 
 .letter-block.starting-letter {
   background: var(--primary-accent-color);
+  color: var(--primary-on-accent-color);
 }
 
 .letter-block.middle-letter {

@@ -1,9 +1,14 @@
+const { memoryController } = require('./_memory-controller.js');
+const { eventController } = require('./_event-controller.js');
 const { createElement } = require('./_utils.js');
 
 class WordStartHints {
-  /** @param {string} rawInput */
-  constructor(rawInput) {
-    const lines = rawInput.trim().split('\n\n')[1].split('\n');
+  constructor() {
+    const lines = memoryController
+      .getRawInput()
+      .trim()
+      .split('\n\n')[1]
+      .split('\n');
     this.hints = lines
       .map(line => line.trim().split(' '))
       .flat()
@@ -15,6 +20,12 @@ class WordStartHints {
   }
 
   render() {
+    this.element = createElement(
+      'section',
+      'word-start-hints',
+      document.querySelector('main')
+    );
+
     const startingLetterToHints = {};
     for (const hint of this.hints) {
       const startingLetter = hint.startingLetters.split('')[0];
@@ -24,11 +35,6 @@ class WordStartHints {
       startingLetterToHints[startingLetter].push(hint);
     }
 
-    this.element = createElement(
-      'section',
-      'word-start-hints',
-      document.querySelector('main')
-    );
     for (const startingLetter in startingLetterToHints) {
       const section = document.createElement('div');
       section.append(
@@ -57,8 +63,28 @@ class Hint {
     );
     this.startingLettersElement.innerText = this.startingLetters;
 
-    this.countElement = createElement('span', 'count', this.element);
-    this.countElement.innerText = this.count;
+    this.countElement = createElement('span', 'counter', this.element);
+
+    const self = this;
+    function setCount() {
+      const foundWordsCount = memoryController
+        .getFoundWords()
+        .filter(
+          foundWord => foundWord.startingLetters === self.startingLetters
+        ).length;
+      const count = self.count - foundWordsCount;
+      if (count <= 0) {
+        self.countElement.innerText = '-';
+        self.startingLettersElement.classList.add('zero');
+        self.countElement.classList.add('zero');
+      } else {
+        self.countElement.innerText = count;
+        self.startingLettersElement.classList.remove('zero');
+        self.countElement.classList.remove('zero');
+      }
+    }
+    setCount();
+    eventController.addFoundWordListener(() => setCount());
   }
 }
 
